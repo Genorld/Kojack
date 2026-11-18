@@ -318,8 +318,8 @@ class KojackHandler(SimpleHTTPRequestHandler):
 
 def main() -> None:
     initialize_database()
-    host = os.environ.get("HOST", "127.0.0.1")
-    port = int(os.environ.get("PORT", "8000"))
+    host = os.environ.get("HOST", "0.0.0.0")
+    port = int(os.environ.get("PORT", "10000"))
     if host not in ("127.0.0.1", "localhost", "::1") and not COOKIE_SECURE:
         raise SystemExit("Set COOKIE_SECURE=1 when exposing the app behind HTTPS.")
     server = ThreadingHTTPServer((host, port), KojackHandler)
